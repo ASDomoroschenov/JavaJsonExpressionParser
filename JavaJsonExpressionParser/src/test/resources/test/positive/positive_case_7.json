@@ -1,0 +1,51 @@
+{
+    "operation": "-",
+    "values": [
+        {
+            "operation": "+",
+            "values": [
+                {
+                    "operation": "-",
+                    "values": [
+                        {
+                            "value": 1
+                        },
+                        {
+                            "operation": "+",
+                            "values": [
+                                {
+                                    "value": 2345
+                                },
+                                {
+                                    "value": 12312
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "operation": "-",
+                    "values": [
+                        {
+                            "value": 1000
+                        },
+                        {
+                            "value": -1000000
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "operation": "+",
+            "values": [
+                {
+                    "value": 1
+                },
+                {
+                    "value": 2
+                }
+            ]
+        }
+    ]
+}

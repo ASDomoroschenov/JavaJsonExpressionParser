@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import ru.mai.exception.JsonExpressionParserException;
 import ru.mai.parser.JsonExpressionParser;
 import ru.mai.parser.impl.JsonExpressionParserImpl;
-import util.TestData;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,13 +19,13 @@ public class JsonExpressionParserTest {
     @DataProvider(name = "positiveCaseDataProvider")
     public Object[][] positiveCaseDataProvider() {
         return new Object[][]{
-                {new TestData(new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_1.json").getPath()), 0)},
-                {new TestData(new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_2.json").getPath()), 7)},
-                {new TestData(new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_3.json").getPath()), -7)},
-                {new TestData(new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_4.json").getPath()), -9)},
-                {new TestData(new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_5.json").getPath()), -2)},
-                {new TestData(new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_6.json").getPath()), 1000996)},
-                {new TestData(new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_7.json").getPath()), 986341)}
+                {new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_1.json").getPath()), 0},
+                {new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_2.json").getPath()), 7},
+                {new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_3.json").getPath()), -7},
+                {new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_4.json").getPath()), -9},
+                {new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_5.json").getPath()), -2},
+                {new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_6.json").getPath()), 1000996},
+                {new File(JsonExpressionParserTest.class.getClassLoader().getResource("./test/positive/positive_case_7.json").getPath()), 986341}
         };
     }
 
@@ -55,10 +54,9 @@ public class JsonExpressionParserTest {
     }
 
     @Test(dataProvider = "positiveCaseDataProvider")
-    public void testPositiveCase(TestData testData) throws IOException, JsonExpressionParserException {
+    public void testPositiveCase(File content, Integer expectedValue) throws IOException, JsonExpressionParserException {
         JsonExpressionParser parser = new JsonExpressionParserImpl();
-        JsonNode jsonNode = mapper.readTree(testData.getContent());
-        Integer expectedValue = testData.getExpectedValue();
+        JsonNode jsonNode = mapper.readTree(content);
 
         System.out.println("Positive test with json:");
         System.out.println(jsonNode.toPrettyString());
